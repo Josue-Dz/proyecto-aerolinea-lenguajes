@@ -23,5 +23,13 @@ public class Reserva {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "codigo_reserva")
   private int codigoReserva;
-  
+
+  @ManyToMany
+    @JoinTable(
+        name = "reserva_vuelo", 
+        joinColumns = @JoinColumn(name = "codigo_reserva"),
+        inverseJoinColumns = @JoinColumn(name = "codigo_vuelo")
+    )
+    private List<Vuelo> vuelos; 
 }
+  

@@ -62,5 +62,7 @@ public class Vuelo {
     @JoinColumn(name = "codigo_avion", referencedColumnName = "codigo_avion", nullable = false)
     private Avion avion;
     
+    @ManyToMany(mappedBy = "vuelos", cascade = CascadeType.ALL)
+    private List<Reserva> reservas;
 
 }

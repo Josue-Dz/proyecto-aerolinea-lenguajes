@@ -30,6 +30,7 @@ public class EstadoAsiento {
   private String nombre;
 
   @OneToMany(mappedBy = "estadoAsiento")
-  private List<Asiento> asientos;
+  @JoinColumn(name ="codigo_asiento", referencedColumnName= "codigo_asiento")
+   private  List<Asiento> asientos;
 
 }

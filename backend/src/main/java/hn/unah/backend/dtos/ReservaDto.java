@@ -13,4 +13,5 @@ public class ReservaDto {
 
   private int codigoReserva;
 
+  private List <VueloDto> vuelos;
 }
