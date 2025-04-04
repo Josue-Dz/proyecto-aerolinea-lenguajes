@@ -31,7 +31,7 @@ public class EstadoVuelo {
     private String nombre;
 
     @OneToMany(mappedBy = "estadoVuelo", cascade = CascadeType.ALL)
-    @JoinColumn(name ="codigo_vuelo", referencedColumnName ="codigo_vuelo")
+    
     private List<Vuelo> vuelos;
 
 }

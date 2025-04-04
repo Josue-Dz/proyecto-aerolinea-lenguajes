@@ -34,5 +34,5 @@ public class VueloDto {
 
     private AvionDto avion;
 
-    private List<ReservaDto> reservas;
+    
 }

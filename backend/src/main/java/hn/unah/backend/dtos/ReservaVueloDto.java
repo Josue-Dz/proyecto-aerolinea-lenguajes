@@ -11,5 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ReservaVueloDto {
 
+    private int codigoReserva;
+    private VueloDto vuelo;
   
 }
