@@ -16,9 +16,11 @@ public class VueloDto {
 
     private int codigoVuelo;
 
-    private LocalDateTime horaSalida;
+    private LocalDateTime fechaHoraLlegada;
 
-    private LocalDateTime horaLlegada;
+    private LocalDateTime fechaHoraSalida;
+
+    private int duracion;
 
     private AeropuertoDto aeropuertoLlegada;
 
@@ -26,6 +28,10 @@ public class VueloDto {
 
     private List<BoletoDto> boletos;
 
-    private EstadoDto estado;
+    private EstadoVueloDto estado;
+
+    private List<AsientoDto> asientos;
+
+    private AvionDto avion;
 
 }

@@ -20,8 +20,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "estados")
-public class Estado {
+@Table(name = "estado_vuelo")
+public class EstadoVuelo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Estado {
 
     private String nombre;
 
-    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "estadoVuelo", cascade = CascadeType.ALL)
     private List<Vuelo> vuelos;
 
 }

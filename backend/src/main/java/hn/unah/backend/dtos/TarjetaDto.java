@@ -17,13 +17,15 @@ public class TarjetaDto {
 
     private Long numeroTarjeta;
 
+    private String nombreTarjeta;
+
     private int cvv;
 
     private LocalDate fechaEmision;
 
     private LocalDate fechaVencimiento;
 
-    private double saldo;
+    private int saldo;
 
     private UsuarioDto usuario;
 

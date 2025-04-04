@@ -53,11 +53,10 @@ public class Vuelo {
 
     @ManyToOne
     @JoinColumn(name = "codigo_estado", referencedColumnName = "codigo_estado", nullable = false)
-    private Estado estado;
+    private EstadoVuelo estadoVuelo;
 
-    @ManyToOne
-    @JoinColumn(name = "codigo_asiento", referencedColumnName = "codigo_asiento", nullable = false)
-    private Asiento asientos;
+    @OneToMany(mappedBy = "vuelo")
+    private List<Asiento> asientos;
 
     @ManyToOne
     @JoinColumn(name = "codigo_avion", referencedColumnName = "codigo_avion", nullable = false)

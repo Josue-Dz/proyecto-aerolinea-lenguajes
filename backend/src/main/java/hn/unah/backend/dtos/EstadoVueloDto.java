@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class EstadoDto {
+public class EstadoVueloDto {
 
     private int codigoEstado;
 

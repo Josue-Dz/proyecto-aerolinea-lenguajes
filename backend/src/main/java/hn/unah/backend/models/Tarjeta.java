@@ -28,9 +28,13 @@ public class Tarjeta {
     @Column(name = "codigo_tarjeta")
     private int codigoTarjeta;
 
-    @Column(name = "numero_tarjeta")
+    @Column(name = "numero")
     private Long numeroTarjeta;
 
+    @Column(name = "nombre")
+    private String nombreTarjeta;
+
+    @Column( name = "cvv")
     private int cvv;
 
     @Column(name = "fecha_emision")
@@ -38,6 +42,9 @@ public class Tarjeta {
 
     @Column(name = "fecha_vencimiento")
     private LocalDate fechaVencimiento;
+
+    @Column( name = "saldo")
+    private int saldo;
 
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario", nullable = false)

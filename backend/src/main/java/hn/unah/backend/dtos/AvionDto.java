@@ -21,7 +21,7 @@ public class AvionDto {
 
     private TipoAvionDto tipoAvion;
 
-    private VueloDto vuelo;
+    private List<VueloDto> vuelo;
 
     private List<AsientoDto> asientos;
 

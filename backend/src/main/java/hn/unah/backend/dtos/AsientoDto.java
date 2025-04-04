@@ -22,4 +22,6 @@ public class AsientoDto {
     private BoletoDto boleto;
 
     private AvionDto avion;
+
+    private EstadoAsientoDto estadoAsiento;
 }
