@@ -29,10 +29,10 @@ public class Tarjeta {
     private int codigoTarjeta;
 
     @Column(name = "numero")
-    private Long numeroTarjeta;
+    private Long numero;
 
     @Column(name = "nombre")
-    private String nombreTarjeta;
+    private String nombre;
 
     @Column( name = "cvv")
     private int cvv;

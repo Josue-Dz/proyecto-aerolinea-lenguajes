@@ -23,7 +23,7 @@ import lombok.Setter;
 public class ReservaVuelos implements Serializable{
 
     @EmbeddedId
-    private ReservaVuelosPK id;
+    private ReservaVuelosId id;
 
     @ManyToOne
     @JoinColumn(name ="codigo_reserva", insertable = false, updatable = false)

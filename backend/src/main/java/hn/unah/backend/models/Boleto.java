@@ -44,4 +44,6 @@ public class Boleto {
     @JoinColumn(name = "codigo_asiento", referencedColumnName = "codigo_asiento")
     private Asiento asiento;
 
+    private boolean pagado = false;
+
 }

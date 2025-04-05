@@ -39,6 +39,7 @@ public class SecurityConfig {
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> {
                 auth.requestMatchers("/api/boletos/pagar").authenticated();
+                auth.requestMatchers("/api/tarjeta/guardar").authenticated();
                 auth.anyRequest().permitAll();
             }).sessionManagement(session -> {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

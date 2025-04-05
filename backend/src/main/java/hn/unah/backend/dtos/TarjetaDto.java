@@ -15,9 +15,9 @@ public class TarjetaDto {
 
     private int codigoTarjeta;
 
-    private Long numeroTarjeta;
+    private Long numero;
 
-    private String nombreTarjeta;
+    private String nombre;
 
     private int cvv;
 
