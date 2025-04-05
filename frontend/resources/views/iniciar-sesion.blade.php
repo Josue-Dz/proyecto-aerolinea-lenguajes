@@ -6,28 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
 
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}?v={{ time() }}">
 </head>
 
 <body>
 
-
-
-    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <header class="d-flex justify-content-center">
+        <ul class="nav nav-tabs border-0">
+            <li>
+                <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
+            </li>
+            <li class="nav-item transparent-items">
+                <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('reservar') }}">Mis vuelos</a>
+            </li>
+            <li class="nav-item transparent-items">
+                <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
+            </li>
+            <li class="nav-item transparent-items">
+                <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('iniciar-sesion') }}">Iniciar Sesión</a>
+            </li>
+        </ul>
+    </header>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
         <div class="card p-4" style="width: 400px;">
             <h4 class="text-center mb-3">Inicia sesión o regístrate</h4>
 
-            <a href="{{ route('autenticacion.google') }}" class="btn btn-light border w-100 mb-3">
-                <img src="https://developers.google.com/identity/images/g-logo.png" width="20" class="me-2">
-                Iniciar sesión con Google
-            </a>
-
-            <div class="MuiStack-root css-hp68mp" style="display: flex; align-items: center;">
-                <hr class="MuiDivider-root MuiDivider-fullWidth css-1e7ihjc" style="flex-grow: 1;">
-                <span class="MuiTypography-root MuiTypography-bodyMedium css-1xws29k" style="margin: 0 10px;">o bien</span>
-                <hr class="MuiDivider-root MuiDivider-fullWidth css-1e7ihjc" style="flex-grow: 1;">
-            </div>
 
             <form action="" method="POST">
                 @csrf
@@ -46,6 +53,21 @@
         </div>
     </div>
 
+    <footer>
+        <div class="">
+            <img src="images/left1.png" class="primary-layer">
+            <img src="images/left2.png" class="secondary-layer">
+        </div>
+        <div class="text-center">
+            <p>© 2025 AeroPass. Todos los derechos reservados.</p>
+            <p>Desarrollado por Aída, José, Luis, Ronny</p>
+
+        </div>
+        <div class="">
+            <img src="images/right1.png" class="primary-layer">
+            <img src="images/right2.png" class="secondary-layer">
+        </div>
+    </footer>
 
 
     <!-- Bootstrap  -->

@@ -8,8 +8,6 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome (para los íconos) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <style body { background: #f8f9fa; } .card {
         border-radius: 15px;
@@ -24,11 +22,33 @@
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }>
     </style>
+    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}?v={{ time() }}">
 </head>
 
 <body>
 
-    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <header>
+        <nav class="navbar border-0">
+            <ul class="nav nav-tabs border-0">
+                <li>
+                    <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('reservar') }}">Mis vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('iniciar-sesion') }}">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
         <div class="card p-4 shadow-lg" style="width: 420px;">
             <h3 class="text-center mb-3 text-primary fw-bold">Crear Cuenta</h3>
             <p class="text-center text-muted">¡Únete y disfruta de nuestros servicios!</p>
@@ -67,8 +87,25 @@
         </div>
     </div>
 
+    <footer class="derechos">
+        <div class="">
+            <img src="images/left1.png" class="primary-layer">
+            <img src="images/left2.png" class="secondary-layer">
+        </div>
+        <div class="text-center">
+            <p>© 2025 AeroPass. Todos los derechos reservados.</p>
+            <p>Desarrollado por Aída, José, Luis, Ronny</p>
+
+        </div>
+        <div class="">
+            <img src="images/right1.png" class="primary-layer">
+            <img src="images/right2.png" class="secondary-layer">
+        </div>
+    </footer>
+
     <!-- Bootstrap Bundle con JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
 </body>
 

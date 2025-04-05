@@ -11,6 +11,9 @@
 
 <body class="container mt-5">
     <ul class="nav nav-tabs">
+        <li>
+            <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+        </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('inicio') }}">Inicio</a>
         </li>
@@ -77,7 +80,15 @@
         </div>
 
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <<<<<<< Updated upstream
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+        </script>
 </body>
 
 </html>
+=======
+
+</div>
+
+@endsection
+>>>>>>> Stashed changes

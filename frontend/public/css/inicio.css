@@ -1,0 +1,101 @@
+body{
+    /* background: linear-gradient(to bottom, #106be2, #FFFFFF); */
+    background: linear-gradient(to bottom, #1878ec 72%, #FFFFFF 160%);
+    height:  100vh;
+    margin: 0;
+}
+
+.centrar{
+    align-self: center;
+}
+
+
+header{
+    margin-top: 1rem;
+    justify-items: center;
+}
+
+.inicio{
+    justify-content: center;
+}
+
+.logo{
+    height: 50px;
+    width: 90px;
+}
+
+.buscador{
+    border-radius: 20px;
+}
+
+.transparencia{
+    background: rgb(255, 255, 255, 0.6);
+    border-radius: 20px;
+}
+
+.tabla{
+    background: #FFFFFF;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.nav-link{
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+
+.radio{
+    background: #FFFFFF;
+    border-radius: 10px;
+    width: 20%;
+    max-width: 220px;
+}
+
+
+footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    align-content: center;
+}
+
+.footer{
+    align-self: flex-end;
+}
+
+.primary-layer{
+    position: absolute;
+    z-index: 1;
+    width: 33vw;
+    height: 13vh;
+}
+
+.secondary-layer{
+    position: absolute;
+    z-index: 0;
+    width: 33vw;
+    height: 12vh;
+}
+
+.logo-sesion-header{
+    border-radius: 20px;
+    height: 12vh;
+    width: 100vw;
+}
+
+.logo-sesion{
+    border-radius: 20px;
+    height: 12vh;
+    width: 15vw;
+}
+
+/* .center-image{
+    position: absolute;
+    z-index: 0;
+    width: 50%;
+    height: 10vh;
+} */

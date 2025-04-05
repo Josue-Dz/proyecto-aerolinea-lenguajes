@@ -6,25 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}?v={{ time() }}">
 </head>
 
-<body class="container mt-5">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('inicio') }}">Inicio</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }}" href="{{ route('reservar') }}">Mis vuelos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }}" href="{{ route('buscar') }}">Informacion de Vuelos</a>
-        </li>
-    </ul>
-    <div class="container inicio">
-        <div class="d-flex flex-column justify-content-center align-items-center m-3" id="div-forms">
-            <div class="d-flex justify-content-start align-items-start mb-2" id="div-seleccion">
-                <div class="form-check me-2">
+<body>
+    <header>
+        <nav class="navbar border-0">
+            <ul class="nav nav-tabs border-0">
+                <li>
+                    <a href="{{ route('inicio') }}""><img src="images/logo.png" alt="" class="logo"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('reservar') }}">Mis vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('iniciar-sesion') }}">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="container d-flex inicio">
+        <div class="d-flex flex-column align-items-center m-2 transparencia">
+            <div class="d-inline-flex justify-content-center align-items-start m-4 radio" id="div-seleccion">
+                <div class="form-check me-2 text-truncate">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label" for="flexRadioDefault1">
                         Ida y Vuelta
@@ -38,9 +50,10 @@
                 </div>
             </div>
 
-            <div class="justify-center buscador">
-                <form class="row row-cols-lg-auto g-3 align-items-center" action="{{ route('buscar') }}">
-                    <div class="col-12">
+
+            <div class="container-fluid buscador bg-light">
+                <form class="row m-2" action="{{ route('buscar') }}">
+                    <div class="col-md">
                         <label for="inlineFormSelectPref">Desde</label>
                         <select class="form-select" id="inlineFormSelectPref">
                             <option selected>Salida</option>
@@ -50,7 +63,7 @@
                         </select>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-md">
                         <label for="inlineFormSelectPref">A</label>
                         <select class="form-select" id="inlineFormSelectPref">
                             <option selected>Destino</option>
@@ -60,17 +73,17 @@
                         </select>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-md text-truncate">
                         <label for="departureDate">Fecha de ida</label>
                         <input type="text" class="form-control" id="departureDate" placeholder="Selecciona la fecha de ida">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-md text-truncate">
                         <label for="returnDate">Fecha de regreso</label>
                         <input type="text" class="form-control" id="returnDate" placeholder="Selecciona la fecha de regreso">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-md">
                         <label for="inlineFormSelectPref">Viajeros</label>
                         <select class="form-select" id="inlineFormSelectPref">
                             <option selected>Choose...</option>
@@ -80,14 +93,30 @@
                         </select>
                     </div>
 
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    <div class="col-md d-grid centrar">
+                        <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
                     </div>
                 </form>
             </div>
         </div>
 
     </div>
+
+    <footer class="derechos">
+        <div class="">
+            <img src="images/left1.png" class="primary-layer">
+            <img src="images/left2.png" class="secondary-layer">
+        </div>
+        <div class="text-center">
+            <p>© 2025 AeroPass. Todos los derechos reservados.</p>
+            <p>Desarrollado por Aída, José, Luis, Ronny</p>
+
+        </div>
+        <div class="">
+            <img src="images/right1.png" class="primary-layer">
+            <img src="images/right2.png" class="secondary-layer">
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -119,6 +148,8 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
