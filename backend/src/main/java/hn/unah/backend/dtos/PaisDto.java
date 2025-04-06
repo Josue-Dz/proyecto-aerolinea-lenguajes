@@ -7,13 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ReservaDto {
+public class PaisDto {
 
-  private int codigoReserva;
-  
-  private List<VueloDto> vuelos;
+    private int codigoPais;
+
+    private String pais;
+
+    private List<LugarDto> lugares;
+    
 }

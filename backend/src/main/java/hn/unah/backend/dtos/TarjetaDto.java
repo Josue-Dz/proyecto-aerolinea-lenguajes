@@ -1,5 +1,6 @@
 package hn.unah.backend.dtos;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +16,7 @@ public class TarjetaDto {
 
     private int codigoTarjeta;
 
-    private Long numero;
+    private int numero;
 
     private String nombre;
 
@@ -25,7 +26,7 @@ public class TarjetaDto {
 
     private LocalDate fechaVencimiento;
 
-    private int saldo;
+    private BigDecimal saldo;
 
     private UsuarioDto usuario;
 

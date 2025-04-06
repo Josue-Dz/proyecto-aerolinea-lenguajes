@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 public class AeropuertoDto {
     
-    private int codigAeropuerto;
+    private int codigoAeropuerto;
 
     private String nombre;
 

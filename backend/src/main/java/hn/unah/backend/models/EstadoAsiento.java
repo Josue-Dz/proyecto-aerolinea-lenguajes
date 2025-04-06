@@ -30,7 +30,6 @@ public class EstadoAsiento {
   private String nombre;
 
   @OneToMany(mappedBy = "estadoAsiento")
-  
-   private  List<Asiento> asientos;
+  private  List<Asiento> asientos;
 
 }

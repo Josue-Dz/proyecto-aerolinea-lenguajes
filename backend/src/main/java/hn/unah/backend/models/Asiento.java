@@ -29,7 +29,7 @@ public class Asiento {
     @Column(name = "codigo_asiento")
     private int codigoAsiento;
 
-    private int tarifa;
+    private Double tarifa;
 
     @ManyToOne
     @JoinColumn(name = "codigo_vuelo", referencedColumnName = "codigo_vuelo")

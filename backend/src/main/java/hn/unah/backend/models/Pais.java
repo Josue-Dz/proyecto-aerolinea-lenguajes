@@ -2,7 +2,6 @@ package hn.unah.backend.models;
 
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,21 +15,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Table(name ="paises")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "estado_vuelo")
-public class EstadoVuelo {
+public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_estado")
-    private int codigoEstado;
+    @Column(name ="codigo_pais")
+    private int codigoPais;
+    
+    private String pais;
 
-    private String nombre;
-
-    @OneToMany(mappedBy = "estadoVuelo", cascade = CascadeType.ALL)
-    private List<Vuelo> vuelos;
-
+    @OneToMany(mappedBy = "pais")
+    private List<Lugar> lugares;
 }

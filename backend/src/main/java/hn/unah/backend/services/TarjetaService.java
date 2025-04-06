@@ -1,10 +1,12 @@
 package hn.unah.backend.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import hn.unah.backend.dtos.TarjetaDto;
@@ -44,9 +46,10 @@ public class TarjetaService {
         }
 
         // Si la tarjeta no existe, creamos una nueva
-        if (tarjetaDto.getSaldo() < 0) {
-            throw new IllegalArgumentException("El saldo de la tarjeta no puede ser negativo.");
+       if (tarjetaDto.getSaldo().compareTo(BigDecimal.ZERO) < 0) {
+    throw new IllegalArgumentException("El saldo de la tarjeta no puede ser negativo.");
         }
+
         // Si la tarjeta no existe, creamos una nueva
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setNumero(tarjetaDto.getNumero());
@@ -61,9 +64,13 @@ public class TarjetaService {
         return tarjetaRepository.save(tarjeta);
     }
 
-    public List<Tarjeta> obtenerTarjetasPorUsuario(String correoUsuario) {
-        Usuario usuario = usuarioRepository.findByCorreo(correoUsuario);
-        return tarjetaRepository.findByUsuario(usuario);
+  public List<Tarjeta> obtenerTarjetasPorUsuario(String correoUsuario) {
+    Usuario usuario = usuarioRepository.findByCorreo(correoUsuario);
+    if (usuario == null) {
+        throw new UsernameNotFoundException("Usuario no encontrado con correo: " + correoUsuario);
     }
+    return tarjetaRepository.findByUsuario(usuario);
+}
+
 
 }

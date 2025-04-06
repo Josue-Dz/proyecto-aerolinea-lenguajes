@@ -1,6 +1,7 @@
 package hn.unah.backend.dtos;
 
-import java.util.List;
+import java.math.BigDecimal;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,9 +18,11 @@ public class LugarDto {
 
     private String nombre;
 
-    private double latitud;
+    private BigDecimal latitud;
 
-    private double longitud;
+    private BigDecimal longitud;
 
-    private List<AeropuertoDto> aeropuertos;
+    private AeropuertoDto aeropuertos;
+
+    private PaisDto pais;
 }
