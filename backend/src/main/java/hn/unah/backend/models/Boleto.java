@@ -1,5 +1,7 @@
 package hn.unah.backend.models;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,7 +29,7 @@ public class Boleto {
     private int codigoBoleto;
 
     @Column(name = "precio_total")
-    private Double precioTotal;
+    private BigDecimal precioTotal;
 
     @Column(name = "distancia_recorrida")
     private Double distanciaRecorrida;

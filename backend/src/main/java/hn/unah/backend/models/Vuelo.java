@@ -3,7 +3,7 @@ package hn.unah.backend.models;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,8 +49,6 @@ public class Vuelo {
     @JoinColumn(name = "codigo_aeropuerto_salida", referencedColumnName = "codigo_aeropuerto", nullable = false)
     private Aeropuerto aeropuertoSalida;
 
-    @OneToMany(mappedBy = "vuelo", cascade = CascadeType.ALL)
-    private List<Boleto> boletos;
 
     @ManyToOne
     @JoinColumn(name = "codigo_estado", referencedColumnName = "codigo_estado", nullable = false)
@@ -64,5 +62,5 @@ public class Vuelo {
     private Avion avion;
 
     @ManyToMany(mappedBy = "vuelos")
-    private List<Reserva> reservas;
+    private List<Reserva> reserva;
 }

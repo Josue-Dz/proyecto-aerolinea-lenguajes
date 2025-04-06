@@ -1,6 +1,9 @@
 package hn.unah.backend.models;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,7 +32,7 @@ public class Tarjeta {
     private int codigoTarjeta;
 
     @Column(name = "numero")
-    private Long numero;
+    private int numero;
 
     @Column(name = "nombre")
     private String nombre;
@@ -44,10 +47,11 @@ public class Tarjeta {
     private LocalDate fechaVencimiento;
 
     @Column(name = "saldo")
-    private Double saldo;
+    private BigDecimal saldo;
 
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario", nullable = false)
+    @JsonIgnore
     private Usuario usuario;
 
 }

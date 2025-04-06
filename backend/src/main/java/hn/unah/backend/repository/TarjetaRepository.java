@@ -12,9 +12,12 @@ import hn.unah.backend.models.Usuario;
 @Repository
 public interface TarjetaRepository extends JpaRepository<Tarjeta, Integer>{
 
-    Tarjeta findByNumero(Long numero);
+    Tarjeta findByNumero(int numero);
 
     Optional<Tarjeta> findTopByUsuario(Usuario usuario);
 
     List<Tarjeta> findByUsuario(Usuario usuario);
+
+    Optional<Tarjeta> findTopByUsuarioOrderByFechaEmisionDesc(Usuario usuario);
+
 }

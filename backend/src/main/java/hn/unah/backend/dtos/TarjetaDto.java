@@ -16,7 +16,7 @@ public class TarjetaDto {
 
     private int codigoTarjeta;
 
-    private Long numero;
+    private int numero;
 
     private String nombre;
 
