@@ -27,14 +27,10 @@ public class Boleto {
     private int codigoBoleto;
 
     @Column(name = "precio_total")
-    private int precioTotal;
+    private Double precioTotal;
 
     @Column(name = "distancia_recorrida")
-    private int distanciaRecorrida;
-
-    @ManyToOne
-    @JoinColumn(name = "codigo_vuelo", referencedColumnName = "codigo_vuelo", nullable = false)
-    private Vuelo vuelo;
+    private Double distanciaRecorrida;
 
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario", nullable = false)
@@ -44,6 +40,12 @@ public class Boleto {
     @JoinColumn(name = "codigo_asiento", referencedColumnName = "codigo_asiento")
     private Asiento asiento;
 
-    private boolean pagado = false;
+    @ManyToOne
+    @JoinColumn(name = "codigo_reserva")
+    private Reserva reserva;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_estado", referencedColumnName = "codigo_estado")
+    private EstadoBoleto estado;
 
 }

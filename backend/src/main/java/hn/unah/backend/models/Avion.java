@@ -32,7 +32,7 @@ public class Avion {
     private String marca;
 
     @Column(name = "anio_fabricacion")
-    private int aniFabricacion;
+    private int anioFabricacion;
 
     @ManyToOne
     @JoinColumn(name = "codigo_tipo_avion", referencedColumnName = "codigo_tipo_avion", nullable = false)

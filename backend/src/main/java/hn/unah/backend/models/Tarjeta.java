@@ -34,7 +34,7 @@ public class Tarjeta {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column( name = "cvv")
+    @Column(name = "cvv")
     private int cvv;
 
     @Column(name = "fecha_emision")
@@ -43,8 +43,8 @@ public class Tarjeta {
     @Column(name = "fecha_vencimiento")
     private LocalDate fechaVencimiento;
 
-    @Column( name = "saldo")
-    private int saldo;
+    @Column(name = "saldo")
+    private Double saldo;
 
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario", nullable = false)

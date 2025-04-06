@@ -1,5 +1,7 @@
 package hn.unah.backend.dtos;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +11,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReservaVueloDto {
+public class EstadoBoletoDto {
+    
+    private int codigoEstado;
 
-    private int codigoReserva;
-    private VueloDto vuelo;
-  
+    private String nombre;
+
+    private List<BoletoDto> boletos;
 }

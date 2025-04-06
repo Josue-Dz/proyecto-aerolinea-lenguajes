@@ -28,7 +28,7 @@ public class Aeropuerto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "codigo_aeropuerto")
-    private int codigAeropuerto;
+    private int codigoAeropuerto;
 
     private String nombre;
 

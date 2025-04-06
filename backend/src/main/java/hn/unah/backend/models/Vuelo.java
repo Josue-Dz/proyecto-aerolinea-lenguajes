@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -38,7 +39,7 @@ public class Vuelo {
     private LocalDateTime fechaHoraLlegada;
 
     @Column(name = "duracion")
-    private int duracion;
+    private LocalDateTime duracion;
 
     @ManyToOne
     @JoinColumn(name = "codigo_aeropuerto_llegada", referencedColumnName = "codigo_aeropuerto", nullable = false)
@@ -61,7 +62,7 @@ public class Vuelo {
     @ManyToOne
     @JoinColumn(name = "codigo_avion", referencedColumnName = "codigo_avion", nullable = false)
     private Avion avion;
-    
-   
 
+    @ManyToMany(mappedBy = "vuelos")
+    private List<Reserva> reservas;
 }

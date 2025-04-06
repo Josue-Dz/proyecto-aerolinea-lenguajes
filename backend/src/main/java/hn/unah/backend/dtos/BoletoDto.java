@@ -23,4 +23,6 @@ public class BoletoDto {
 
     private AsientoDto asiento;
 
+    private EstadoBoletoDto estado;
+
 }
