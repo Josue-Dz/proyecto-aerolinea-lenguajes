@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ import hn.unah.backend.services.TarjetaService;
 
 @RestController
 @RequestMapping("/api/tarjeta")
+@CrossOrigin(origins ="http://127.0.0.1:8000")
 public class TarjetaController {
 
     @Autowired

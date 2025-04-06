@@ -2,6 +2,7 @@ package hn.unah.backend.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api/boletos")
+@CrossOrigin(origins ="http://127.0.0.1:8000")
 public class BoletoController {
 
     private BoletoService boletoService;

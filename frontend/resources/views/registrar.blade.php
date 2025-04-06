@@ -8,6 +8,10 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
 
     <style body { background: #f8f9fa; } .card {
         border-radius: 15px;
@@ -48,33 +52,43 @@
             </ul>
         </nav>
     </header>
-    <div class="container d-flex justify-content-center align-items-center" style="height: 70vh;">
+    <div class="container d-flex justify-content-center align-items-center mt-5" style="height: 60vh;">
         <div class="card p-4 shadow-lg" style="width: 420px;">
             <h3 class="text-center mb-3 text-primary fw-bold">Crear Cuenta</h3>
             <p class="text-center text-muted">¡Únete y disfruta de nuestros servicios!</p>
 
-            <form action="" method="POST">
+            <form action="{{ route('registro.usuario') }}" method="post">
                 @csrf
+                @method('POST')
+                <div class="mb-3 input-group">
+                    <span class="input-group-text bg-primary text-white"><i class="fas fa-user"></i></span>
+                    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                </div>
 
                 <div class="mb-3 input-group">
                     <span class="input-group-text bg-primary text-white"><i class="fas fa-user"></i></span>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="Nombre completo" required>
+                    <input type="text" name="apellido" id="name" class="form-control" placeholder="Apellido" required>
                 </div>
 
                 <div class="mb-3 input-group">
                     <span class="input-group-text bg-primary text-white"><i class="fas fa-envelope"></i></span>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Correo electrónico" required>
+                    <input type="email" name="correo" id="email" class="form-control" placeholder="Correo electrónico" required>
                 </div>
 
                 <div class="mb-3 input-group">
                     <span class="input-group-text bg-primary text-white"><i class="fas fa-lock"></i></span>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
+                    <input type="password" name="contrasenia" id="contrasenia" class="form-control" placeholder="Contraseña" required>
                 </div>
 
                 <div class="mb-3 input-group">
                     <span class="input-group-text bg-primary text-white"><i class="fas fa-lock"></i></span>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirmar contraseña" required>
                 </div>
+
+                <div class="mb-3 form-group">
+                    <input type="text" id="fechaNacimiento" name="fechaNacimiento" class="form-control" placeholder="Selecciona tu fecha de nacimiento">
+                </div>
+
 
                 <button type="submit" class="btn btn-primary w-100 fw-bold shadow">
                     Registrarse <i class="fas fa-arrow-right"></i>
@@ -106,6 +120,17 @@
     <!-- Bootstrap Bundle con JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#fechaNacimiento").datepicker({
+                dateFormat: "yy-mm-dd", // Formato de la fecha
+                changeMonth: true, // Para elegir el mes
+                changeYear: true, // Para elegir el año
+                yearRange: "-100:+0" // Rango de años (últimos 100 años hasta hoy)
+            });
+        });
+    </script>
+
 
 </body>
 

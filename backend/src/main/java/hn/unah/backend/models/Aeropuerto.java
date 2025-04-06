@@ -2,6 +2,8 @@ package hn.unah.backend.models;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "aeropuertos")
+@CrossOrigin
 public class Aeropuerto {
 
     @Id

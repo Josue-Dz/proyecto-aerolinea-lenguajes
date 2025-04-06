@@ -11,11 +11,14 @@ import hn.unah.backend.dtos.AuthCreateUserRequest;
 import hn.unah.backend.dtos.AuthLoginRequest;
 import hn.unah.backend.dtos.AuthResponse;
 import hn.unah.backend.services.UserDetailsServiceImpl;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
 @RequestMapping("/api/auth")
+@CrossOrigin(origins ="http://127.0.0.1:8000")
 public class AuthenticationController {
 
     @Autowired

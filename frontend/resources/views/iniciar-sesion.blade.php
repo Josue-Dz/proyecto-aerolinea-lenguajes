@@ -35,9 +35,9 @@
         <div class="card p-4" style="width: 400px;">
             <h4 class="text-center mb-3">Inicia sesión o regístrate</h4>
 
-
-            <form action="" method="POST">
+            <form action="{{ route('iniciar.sesion') }}" method="post">
                 @csrf
+                @method('POST')
                 <div class="mb-3">
                     <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo electrónico" required style="width: 100%; height: 50px; font-size: 16px;">
                 </div>
@@ -48,7 +48,7 @@
             </form>
 
             <div class="text-center mt-3">
-                <p class="mb-0">¿No tienes una cuenta? <a href="{{ route('registro') }}">Regístrate aquí</a></p>
+                <p class="mb-0">¿No tienes una cuenta? <a href="{{ route('registro.formulario') }}">Regístrate aquí</a></p>
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
         <nav class="navbar border-0">
             <ul class="nav nav-tabs border-0">
                 <li>
-                    <a href="{{ route('inicio') }}""><img src="images/logo.png" alt="" class="logo"></a>
+                    <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
