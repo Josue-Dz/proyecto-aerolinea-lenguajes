@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import hn.unah.backend.dtos.VueloDto;
 import hn.unah.backend.models.Vuelo;
 import hn.unah.backend.services.VueloService;
 
@@ -25,15 +26,15 @@ public class VueloController {
     @Autowired
     private VueloService vueloService;
 
-    @GetMapping("/reservados/futuros/{correoUsuario}")
-    public ResponseEntity<Object> obtenerVuelosReservadosFuturos(@PathVariable String correoUsuario) {
+    @GetMapping("/reservados/futuros/{idUsuario}")
+    public ResponseEntity<Object> obtenerVuelosReservadosFuturos(@PathVariable int idUsuario) {
         try {
-            List<Vuelo> vuelosFuturos = vueloService.obtenerVuelosReservadosFuturos(correoUsuario);
+            List<VueloDto> vuelosFuturos = vueloService.obtenerVuelosReservadosFuturos(idUsuario);
 
             if (vuelosFuturos.isEmpty()) {
                 // Si no se encuentran vuelos, retornamos un mensaje con código 404
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("No se encontraron vuelos reservados en el futuro para el usuario: " + correoUsuario);
+                        .body("No se encontraron vuelos reservados en el futuro para el usuario: ");
             }
 
             // Si se encuentran vuelos, retornamos los vuelos con código 200
@@ -45,23 +46,18 @@ public class VueloController {
         }
     }
 
-    @GetMapping("/historial/{correoUsuario}")
-    public ResponseEntity<?> obtenerHistorialDeVuelos(@PathVariable String correoUsuario) {
+    @GetMapping("/historial/{idUsuario}")
+    public ResponseEntity<?> obtenerHistorialDeVuelos(@PathVariable int idUsuario) {
         try {
-            // Validación de correo
-            if (correoUsuario == null || !correoUsuario.contains("@")) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                        .body("Correo electrónico inválido.");
-            }
 
-            Map<String, List<Vuelo>> historial = vueloService.obtenerHistorialDeVuelos(correoUsuario);
+            Map<String, List<VueloDto>> historial = vueloService.obtenerHistorialDeVuelos(idUsuario);
 
             boolean historialVacio = historial.get("vuelosPasados").isEmpty() &&
                     historial.get("vuelosFuturos").isEmpty();
 
             if (historialVacio) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("No se encontraron vuelos para el usuario con correo: " + correoUsuario);
+                        .body("No se encontraron vuelos para el usuario");
             }
 
             return ResponseEntity.ok(historial);

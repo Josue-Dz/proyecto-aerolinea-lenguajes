@@ -38,7 +38,7 @@ public class SecurityConfig {
             .csrf(config -> config.disable())
             .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/api/boletos/pagar").authenticated();
+                auth.requestMatchers("/api/boletos/**").authenticated();
                 auth.requestMatchers("/api/tarjeta/guardar").authenticated();
                 auth.anyRequest().permitAll();
             }).sessionManagement(session -> {

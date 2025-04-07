@@ -1,8 +1,9 @@
 package hn.unah.backend.models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,15 +40,15 @@ public class Vuelo {
     private LocalDateTime fechaHoraLlegada;
 
     @Column(name = "duracion")
-    private LocalDateTime duracion;
-
-    @ManyToOne
-    @JoinColumn(name = "codigo_aeropuerto_llegada", referencedColumnName = "codigo_aeropuerto", nullable = false)
-    private Aeropuerto aeropuertoLlegada;
+    private LocalTime duracion;
 
     @ManyToOne
     @JoinColumn(name = "codigo_aeropuerto_salida", referencedColumnName = "codigo_aeropuerto", nullable = false)
     private Aeropuerto aeropuertoSalida;
+
+    @ManyToOne
+    @JoinColumn(name = "codigo_aeropuerto_llegada", referencedColumnName = "codigo_aeropuerto", nullable = false)
+    private Aeropuerto aeropuertoLlegada;
 
 
     @ManyToOne

@@ -7,20 +7,31 @@
     <title>Buscar Vuelos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/avion.css') }}">
 </head>
 
 <body class="container mt-5">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('inicio') }}">Inicio</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }}" href="{{ route('reservar') }}">Mis vuelos</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }}" href="{{ route('buscar') }}">Informacion de Vuelos</a>
-        </li>
-    </ul>
+<header>
+        <nav class="navbar border-0">
+            <ul class="nav nav-tabs border-0">
+                <li>
+                    <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('historial') }}">Mis vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
+                </li>
+                <li class="nav-item transparent-items">
+                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('iniciar-sesion') }}">Iniciar Sesión</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <div class="d-flex justify-content-center align-items-center">
             <div class="container m-2">
@@ -29,27 +40,22 @@
                     <div class="col-md-6">
                         <h1 class="mb-4">Información sobre el Vuelo</h1>
                         <div>
-                            <p><strong>Desde:</strong></p>
-                            <p>Aeropuerto de Salida:</p>
-                            <p>Fecha de Salida:</p>
-                            <p>Hora de Salida:</p>
+                            <p><strong>Desde: </strong></p>
+                            <p>{{ $vuelo->aeropuertoSalida->lugar->nombre }}</p>
+                            <p>Aeropuerto de Salida: {{ $vuelo->aeropuertoSalida->nombre }}</p>
+                            <p>Fecha y Hora de Salida: {{ $vuelo->fechaHoraSalida }}</p>
                         </div>
                         <div class="mt-3">
                             <p><strong>Hacia:</strong></p>
-                            <p>Aeropuerto de Llegada:</p>
-                            <p>Fecha de Llegada:</p>
-                            <p>Hora de Llegada:</p>
-                        </div>
-
-                        <div class="mt-3">
-                            <p><strong>Asiento Seleccionado:</strong></p>
-                            <p>A1</p>
+                            <p>{{ $vuelo->aeropuertoLlegada->lugar->nombre }}</p>
+                            <p>Aeropuerto de Llegada: {{ $vuelo->aeropuertoLlegada->nombre }}</p>
+                            <p>Fecha y Hora de Llegada: {{ $vuelo->fechaHoraLlegada }}</p>
                         </div>
 
                         <div class="mt-3">
                             <p><strong>Asientos:</strong></p>
                             <p>Seleccionado</p>
-                            <p>Clásico</p>
+                            <p>Clásica</p>
                             <p>Ejecutiva</p>
                             <p>Primera Clase</p>
                         </div>
@@ -74,13 +80,10 @@
                             <div id="avion-fuera">
                                 <div class="avion-dentro">
                                     @foreach($asientos as $asiento)
-                                    <button type="button"
-                                        class="asiento {{ strtolower($asiento->clase) }} 
-                                        {{ $asiento->disponible ? '' : 'ocupado' }}"
-                                        data-asiento="{{ $asiento->codigo_asiento }}">
-                                        {{ $asiento->codigo_asiento }}
+                                    <button type="button" class="asiento {{ $asiento->clase->codigoClase }} {{ $asiento->estadoAsiento->codigoEstado }}">
+                                        {{ $asiento->codigoAsiento }}
                                     </button>
-                                    @if($asiento->codigo_asiento % 3 == 0 && !($asiento->codigo_asiento % 6 == 0))
+                                    @if($asiento->codigoAsiento % 3 == 0 && !($asiento->codigoAsiento % 6 == 0))
                                     <div class="pasillo"></div>
                                     @endif
                                     @endforeach
@@ -94,6 +97,23 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const asientos = document.querySelectorAll('.asiento');
+
+            asientos.forEach(function(asiento) {
+                asiento.addEventListener('click', function() {
+                    // Si el asiento ya está seleccionado, lo deseleccionamos
+                    if (asiento.classList.contains('seleccionado')) {
+                        asiento.classList.remove('seleccionado');
+                    } else {
+                        // Si el asiento no está seleccionado, lo seleccionamos
+                        asiento.classList.add('seleccionado');
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

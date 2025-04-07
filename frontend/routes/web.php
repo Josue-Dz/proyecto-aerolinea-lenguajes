@@ -2,26 +2,33 @@
 
 use App\Http\Controllers\AerolineaController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\TarjetaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 //Para cargar las vistas
 Route::get('/inicio',
     [AerolineaController::class, 'aerolinea'])->name('inicio');
 
-Route::get('/buscar',
+Route::post('/buscar',
     [AerolineaController::class, 'busqueda'])->name('buscar');
 
 Route::get('/reservar',
     [AerolineaController::class, 'reservar'])->name('reservar');
 
-Route::get('/pagar',
-    [AerolineaController::class, 'pagar'])->name('pagar');
+// Route::get('/pagar',
+//     [AerolineaController::class, 'pagar'])->name('pagar');
 
+// Ruta para guardar tarjeta y pagar
+Route::get('/aerolinea/pagar/{codigoBoleto?}', [AerolineaController::class, 'pagar'])->name('pagar');
+Route::post('/aerolinea/pagar', [TarjetaController::class, 'guardarTarjeta'])->name('pagar');
+
+// Rutas para reservar vuelos y ver el historial
+Route::get('/aerolinea/reservar/{idVuelo?}', [AerolineaController::class, 'reservar'])->name('reservar');
+Route::get('/aerolinea/historial/{idUsuario?}', [AerolineaController::class, 'verHistorial'])->name('historial');
 
 //Para inicio de sesión y registro
 Route::get('/iniciar-sesion', 

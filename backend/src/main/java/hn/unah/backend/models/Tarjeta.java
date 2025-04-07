@@ -3,8 +3,6 @@ package hn.unah.backend.models;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,7 +49,6 @@ public class Tarjeta {
 
     @ManyToOne
     @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo_usuario", nullable = false)
-    @JsonIgnore
     private Usuario usuario;
 
 }

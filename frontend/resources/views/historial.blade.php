@@ -10,11 +10,11 @@
 </head>
 
 <body>
-<header>
+    <header>
         <nav class="navbar border-0">
             <ul class="nav nav-tabs border-0">
                 <li>
-                    <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+                    <a href="{{ route('inicio') }}"><img src="images/logo.png" class="logo"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
@@ -25,99 +25,43 @@
                 <li class="nav-item transparent-items">
                     <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
                 </li>
-                <li class="nav-item transparent-items">
-                    <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('iniciar-sesion') }}">Iniciar Sesión</a>
-                </li>
             </ul>
         </nav>
     </header>
     <div class="container mt-2">
 
         <div class="container-fluid">
-            <div class="d-flex justify-content-evenly m-5 buscador bg-light"> <!-- Div para almacenar datos anteriores de búsqueda -->
-                <form class="row row m-2" action="{{ route('buscar') }}">
-                    <div class="col-md">
-                        <label for="inlineFormSelectPref">Desde</label>
-                        <select class="form-select" id="inlineFormSelectPref">
-                            <option selected>Salida</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md">
-                        <label for="inlineFormSelectPref">A</label>
-                        <select class="form-select" id="inlineFormSelectPref">
-                            <option selected>Destino</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md text-truncate">
-                        <label for="departureDate">Fecha de ida</label>
-                        <input type="text" class="form-control" id="departureDate" placeholder="Selecciona la fecha de ida">
-                    </div>
-
-                    <div class="col-md text-truncate">
-                        <label for="returnDate">Fecha de regreso</label>
-                        <input type="text" class="form-control" id="returnDate" placeholder="Selecciona la fecha de regreso">
-                    </div>
-
-                    <div class="col-md">
-                        <label for="inlineFormSelectPref">Viajeros</label>
-                        <select class="form-select" id="inlineFormSelectPref">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md d-grid centrar">
-                        <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
-                    </div>
-                </form>
-            </div>
-
             <div class="container mt-5">
                 <div class="d-flex justify-content-between mb-3 text-white">
-                    <h2>Vuelos Disponibles</h2>
+                    <h2>Historial de Vuelos</h2>
                 </div>
                 <div class="tabla p-2">
-                    <table class="table table-sm table-striped table-bordered"> <!-- Vuelos disponibles -->
+                    <table class="table table-sm table-striped table-bordered"> <!-- Historial de Vuelos -->
                         <thead class="thead-dark">
-
                             <tr>
                                 <th>Aeropuerto de Salida</th>
                                 <th>Aeropuerto de Llegada</th>
                                 <th>Estado de Vuelo</th>
                                 <th>Hora de Salida</th>
                                 <th>Hora de Llegada</th>
-                                <th>Precio</th>
                                 <th>Más Detalles</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @if (!empty($vuelos))
-                        @foreach ($vuelos as $vuelo)
+                            @foreach ($vuelos as $vuelo)
                             <tr>
-                                <td>{{$vuelo->destino}}</td>
-                                <td>{{$vuelo->origen}}</td>
-                                <td>{{$vuelo->estadoVuelo}}</td>
-                                <td>{{$vuelo->horaSalida}}</td>
-                                <td>{{$vuelo->horaLlegada}}</td>
-                                <td>{{$vuelo->precio}}</td>
+                                <td>{{ $vuelo->aeropuertoSalida->nombre }}</td>
+                                <td>{{ $vuelo->aeropuertoLlegada->nombre }}</td>
+                                <td>{{ $vuelo->estado->nombre }}</td>
+                                <td>{{ $vuelo->fechaHoraSalida }}</td>
+                                <td>{{ $vuelo->fechaHoraLlegada }}</td>
                                 <td class="action-buttons">
-                                    <a href="{{ route('reservar', $vuelo->codigoReserva) }}" class="btn btn-info btn-sm">
-                                        Reservar
+                                    <a href="{{ route('reservar') }}" class="btn btn-info btn-sm">
+                                        Ver Más
                                     </a>
                                 </td>
                             </tr>
                             @endforeach
-                            @endif
                         </tbody>
                     </table>
                 </div>

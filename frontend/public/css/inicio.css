@@ -92,7 +92,87 @@ footer{
     height: 12vh;
     width: 15vw;
 }
+#avion {
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
 
+#avion-fuera {
+    background: darkgray;
+    padding: 20px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.avion-dentro {
+    display: grid;
+    grid-template-columns: repeat(7, 25px); 
+    grid-gap: 10px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.asiento {
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ocupado{
+    background-color: red;
+    border-color: red;
+}
+
+.seleccionado {
+    background-color: blue;
+    border-color: blue;
+}
+
+.salida {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-weight: bold;
+    color: gray;
+}
+
+/* Colores para cada tipo de asiento */
+.asiento.clasica {
+    background-color: lightgray; /* Color para la clase 'clásica' */
+}
+
+.asiento.ejecutiva {
+    background-color: lightblue; /* Color para la clase 'ejecutiva' */
+}
+
+.asiento.primera-clase {
+    background-color: gold; /* Color para la clase 'primera clase' */
+}
+
+/* Clase para resaltar el asiento seleccionado */
+.asiento.seleccionado.clasica {
+    background-color: darkgray;
+    color: white;
+}
+
+.asiento.seleccionado.ejecutiva {
+    background-color: darkblue;
+    color: white;
+}
+
+.asiento.seleccionado.primera-clase {
+    background-color: darkgoldenrod;
+    color: white;
+}
 /* .center-image{
     position: absolute;
     z-index: 0;

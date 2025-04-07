@@ -3,6 +3,8 @@ package hn.unah.backend.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ public class Reserva{
     private int codigoReserva;
 
    @OneToMany(mappedBy = "reserva")
+   @JsonIgnore
     private List<Boleto> boletos;
 
     @ManyToMany

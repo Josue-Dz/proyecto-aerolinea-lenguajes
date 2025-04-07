@@ -27,46 +27,45 @@ public class BoletoService {
     @Autowired
     private EstadoBoletoRepository estadoBoletoRepository;
 
+
     @Transactional
     public String pagarBoleto(int codigoBoleto) {
+        
         try {
-            // Buscar el boleto
-            Boleto boleto = boletoRepository.findById(codigoBoleto)
-                    .orElseThrow(() -> new EntityNotFoundException("No se encontró el boleto con código " + codigoBoleto));
+
+            Boleto boleto = this.boletoRepository.findById(codigoBoleto)
+                            .orElseThrow(() -> new EntityNotFoundException("No se encontró el boleto con código " + codigoBoleto));
+
+            
     
-            // Verificar si ya está pagado
+            
             if (boleto.getEstado().getNombre().equalsIgnoreCase("Pagado")) {
                 return "El boleto ya está pagado.";
             }
     
-            // Obtener el usuario
             Usuario usuario = boleto.getUsuario();
             if (usuario == null) {
                 throw new IllegalArgumentException("El boleto no está asociado a ningún usuario.");
             }
     
-            // Obtener la tarjeta más reciente o prioritaria
+            // Obtiene la tarjeta más reciente o prioritaria y validar saldo
             Tarjeta tarjeta = tarjetaRepository.findTopByUsuarioOrderByFechaEmisionDesc(usuario)
                     .orElseThrow(() -> new EntityNotFoundException("El usuario no tiene una tarjeta registrada."));
     
             BigDecimal precio = boleto.getPrecioTotal();
             BigDecimal saldo = tarjeta.getSaldo();
     
-            // Validar saldo
+            
             if (saldo.compareTo(precio) < 0) {
                 return "Saldo insuficiente en la tarjeta.";
             }
     
-            // Realizar el pago
+            // Realizar el pago y cambia el estado del boleto de pendiente a pagado
             tarjeta.setSaldo(saldo.subtract(precio));
-    
-            // Cambiar estado del boleto a "Pagado"
-            EstadoBoleto estadoPagado = estadoBoletoRepository.findByNombre("Pagado")
-                    .orElseThrow(() -> new EntityNotFoundException("Estado 'Pagado' no encontrado."));
-    
+            EstadoBoleto estadoPagado = estadoBoletoRepository.findByNombre("Pagado").get();
             boleto.setEstado(estadoPagado);
     
-            // Guardar cambios
+            // Guarda los cambios en la bd
             tarjetaRepository.save(tarjeta);
             boletoRepository.save(boleto);
     
@@ -76,7 +75,6 @@ public class BoletoService {
         } catch (IllegalArgumentException ex) {
             return "Error en la lógica de negocio: " + ex.getMessage();
         } catch (Exception ex) {
-            // Captura cualquier error no controlado
             return "Ocurrió un error inesperado: " + ex.getMessage();
         }
     }

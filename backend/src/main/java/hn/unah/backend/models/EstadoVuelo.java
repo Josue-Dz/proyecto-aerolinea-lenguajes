@@ -2,6 +2,8 @@ package hn.unah.backend.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,6 +33,7 @@ public class EstadoVuelo {
     private String nombre;
 
     @OneToMany(mappedBy = "estadoVuelo", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Vuelo> vuelos;
 
 }

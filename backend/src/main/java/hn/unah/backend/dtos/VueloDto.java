@@ -1,6 +1,7 @@
 package hn.unah.backend.dtos;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -20,11 +21,11 @@ public class VueloDto {
 
     private LocalDateTime fechaHoraSalida;
 
-    private int duracion;
-
-    private AeropuertoDto aeropuertoLlegada;
+    private LocalTime duracion;
 
     private AeropuertoDto aeropuertoSalida;
+
+    private AeropuertoDto aeropuertoLlegada;
 
     private List<BoletoDto> boletos;
 

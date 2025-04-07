@@ -13,7 +13,7 @@ public class AsientoDto {
 
     private int codigoAsiento;
 
-    private int tarifa;
+    private double tarifa;
 
     private VueloDto vuelo;
 

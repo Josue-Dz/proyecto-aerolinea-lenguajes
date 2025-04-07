@@ -14,13 +14,13 @@
         <nav class="navbar border-0">
             <ul class="nav nav-tabs border-0">
                 <li>
-                    <a href="{{ route('inicio') }}"><img src="images/logo.png" alt="" class="logo"></a>
+                    <a href="{{ route('inicio') }}"><img src=" images/logo.png" alt="" class="logo"></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }} rounded-pill" href="{{ route('inicio') }}">Inicio</a>
                 </li>
                 <li class="nav-item transparent-items">
-                    <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('reservar') }}">Mis vuelos</a>
+                    <a class="nav-link {{ request()->is('reservaciones') ? 'active' : '' }} rounded-pill" href="{{ route('historial', 1) }}">Mis vuelos</a>
                 </li>
                 <li class="nav-item transparent-items">
                     <a class="nav-link {{ request()->is('vuelos') ? 'active' : '' }} rounded-pill" href="{{ route('buscar') }}">Informacion de Vuelos</a>
@@ -52,40 +52,46 @@
 
 
             <div class="container-fluid buscador bg-light">
-                <form class="row m-2" action="{{ route('buscar') }}">
+                <form class="row m-2" action="{{ route('buscar') }}" method="post">
+                    @csrf
+                    @method('POST')
                     <div class="col-md">
-                        <label for="inlineFormSelectPref">Desde</label>
-                        <select class="form-select" id="inlineFormSelectPref">
-                            <option selected>Salida</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="origen">Desde</label>
+                        <select class="form-select" id="origen" name="origen">
+                            <option selected disabled>Salida</option>
+                            @foreach ($aeropuertos as $aeropuerto)
+                            <option value="{{ $aeropuerto->codigoAeropuerto }}">
+                                {{ $aeropuerto->nombre }} ({{ $aeropuerto->lugar->nombre ?? '' }})
+                            </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col-md">
-                        <label for="inlineFormSelectPref">A</label>
-                        <select class="form-select" id="inlineFormSelectPref">
-                            <option selected>Destino</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="destino">A</label>
+                        <select class="form-select" id="destino" name="destino">
+                            <option selected disabled>Destino</option>
+                            @foreach ($aeropuertos as $aeropuerto)
+                            <option value="{{ $aeropuerto->codigoAeropuerto }}">
+                                {{ $aeropuerto->nombre }} ({{ $aeropuerto->lugar->nombre ?? '' }})
+                            </option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div class="col-md text-truncate">
                         <label for="departureDate">Fecha de ida</label>
-                        <input type="text" class="form-control" id="departureDate" placeholder="Selecciona la fecha de ida">
+                        <input type="text" class="form-control" id="departureDate" name="fechaSalida" placeholder="Selecciona la fecha de ida">
                     </div>
 
                     <div class="col-md text-truncate">
                         <label for="returnDate">Fecha de regreso</label>
-                        <input type="text" class="form-control" id="returnDate" placeholder="Selecciona la fecha de regreso">
+                        <input type="text" class="form-control" id="returnDate" name="fechaRegreso" placeholder="Selecciona la fecha de regreso">
                     </div>
 
                     <div class="col-md">
                         <label for="inlineFormSelectPref">Viajeros</label>
-                        <select class="form-select" id="inlineFormSelectPref">
+                        <select class="form-select" id="inlineFormSelectPref" name="viajeros">
                             <option selected>Choose...</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>

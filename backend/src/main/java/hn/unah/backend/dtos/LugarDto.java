@@ -18,9 +18,9 @@ public class LugarDto {
 
     private String nombre;
 
-    private BigDecimal latitud;
+    private double latitud;
 
-    private BigDecimal longitud;
+    private double longitud;
 
     private AeropuertoDto aeropuertos;
 

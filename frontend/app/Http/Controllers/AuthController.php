@@ -39,11 +39,13 @@ class AuthController extends Controller
 
             $body = json_decode($response->getBody(), true);
             $jwtToken = $body['jwt'];
+            $status = $body['status'] ?? false;
 
-
+            return response()->json($body);
+            
             // Guarda el token JWT en la sesión de Laravel
             $request->session()->put('jwtToken', $jwtToken);
-            $request->session()->put('authenticated', $body['authenticated']);
+            $request->session()->put('authenticated', $status);
 
             return redirect()->route('inicio');
         } catch (\GuzzleHttp\Exception\ClientException $e) {
