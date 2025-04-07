@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.backend.dtos.AeropuertoDto;
 import hn.unah.backend.services.AeropuertoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 @RestController
 @RequestMapping("/api/aeropuerto")
@@ -21,6 +24,17 @@ public class AeropuertoController {
     
     @Autowired
     private AeropuertoService aeropuertoService;
+
+    @Operation(
+        summary = "Obtener aeropuertos por código de vuelo",
+        description = "Devuelve la lista de aeropuertos (origen y destino) asociados a un vuelo específico según su código."
+    )
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Aeropuertos encontrados exitosamente"),
+        @ApiResponse(responseCode = "204", description = "No se encontraron aeropuertos para el vuelo especificado"),
+        @ApiResponse(responseCode = "400", description = "Petición incorrecta o código de vuelo inválido"),
+        @ApiResponse(responseCode = "500", description = "Error interno del servidor")
+    })
 
     @GetMapping("/aeropuertos")
     public ResponseEntity<?> obtenerTodosLosAeropuertos() {

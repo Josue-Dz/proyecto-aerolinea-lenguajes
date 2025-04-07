@@ -6,7 +6,7 @@ use App\Http\Controllers\TarjetaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('welcome');
 });
 
 //Para cargar las vistas
@@ -18,9 +18,6 @@ Route::post('/buscar',
 
 Route::get('/reservar',
     [AerolineaController::class, 'reservar'])->name('reservar');
-
-// Route::get('/pagar',
-//     [AerolineaController::class, 'pagar'])->name('pagar');
 
 // Ruta para guardar tarjeta y pagar
 Route::get('/aerolinea/pagar/{codigoBoleto?}', [AerolineaController::class, 'pagar'])->name('pagar');

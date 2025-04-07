@@ -97,16 +97,16 @@ public class BusquedaService {
         final double R = 6371;
 
         // Obtener latitudes y longitudes 
-        double lat1BD = primeraEscala.getAeropuertoSalida().getLugar().getLatitud();
-        double lon1BD = primeraEscala.getAeropuertoSalida().getLugar().getLongitud();
-        double lat2BD = ultimaEscala.getAeropuertoLlegada().getLugar().getLatitud();
-        double lon2BD = ultimaEscala.getAeropuertoLlegada().getLugar().getLongitud();
+        BigDecimal lat1BD = primeraEscala.getAeropuertoSalida().getLugar().getLatitud();
+        BigDecimal lon1BD = primeraEscala.getAeropuertoSalida().getLugar().getLongitud();
+        BigDecimal lat2BD = ultimaEscala.getAeropuertoLlegada().getLugar().getLatitud();
+        BigDecimal lon2BD = ultimaEscala.getAeropuertoLlegada().getLugar().getLongitud();
 
         // Convertir a radianes (usando double)
-        double lat1 = Math.toRadians(lat1BD);
-        double lon1 = Math.toRadians(lon1BD);
-        double lat2 = Math.toRadians(lat2BD);
-        double lon2 = Math.toRadians(lon2BD);
+        double lat1 = Math.toRadians(lat1BD.doubleValue());
+        double lon1 = Math.toRadians(lon1BD.doubleValue());
+        double lat2 = Math.toRadians(lat2BD.doubleValue());
+        double lon2 = Math.toRadians(lon2BD.doubleValue());
 
         // Diferencias de latitud y longitud
         double deltaLat = lat2 - lat1;

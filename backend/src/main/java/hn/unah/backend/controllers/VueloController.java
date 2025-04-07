@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import hn.unah.backend.dtos.VueloDto;
-import hn.unah.backend.models.Vuelo;
 import hn.unah.backend.services.VueloService;
 
 @RestController

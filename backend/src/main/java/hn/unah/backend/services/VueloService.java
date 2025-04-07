@@ -24,7 +24,6 @@ import hn.unah.backend.repository.VueloRepository;
 import jakarta.transaction.Transactional;
 import hn.unah.backend.repository.BoletoRepository;
 
-import hn.unah.backend.repository.ReservaVueloRepository;
 
 @Service
 public class VueloService {

@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import hn.unah.backend.dtos.TarjetaDto;
 import hn.unah.backend.models.Tarjeta;
 import hn.unah.backend.services.TarjetaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/api/tarjeta")
@@ -26,6 +31,17 @@ public class TarjetaController {
 
     @Autowired
     private TarjetaService tarjetaService;
+
+
+    
+    @Operation(summary = "Guardar una nueva tarjeta", description = "Este endpoint permite guardar una nueva tarjeta en el sistema."
+    +
+    " Si la tarjeta ya existe, retorna un conflicto (409).")
+@ApiResponses(value = {
+    @ApiResponse(responseCode = "201", description = "Tarjeta creada correctamente"),
+    @ApiResponse(responseCode = "409", description = "La tarjeta ya existe"),
+    @ApiResponse(responseCode = "500", description = "Error interno al guardar la tarjeta")
+})
 
     @PostMapping("/guardar")
     public ResponseEntity<Map<String, Object>> guardarTarjeta(@RequestBody TarjetaDto tarjetaDto) {
@@ -54,6 +70,15 @@ public class TarjetaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
+
+    @Operation(summary = "Obtener tarjetas de un cliente", description = "Este endpoint permite obtener todas las tarjetas asociadas "+
+    "al correo del usuario especificado.")
+     @ApiResponses(value = {
+             @ApiResponse(responseCode = "200", description = "Tarjetas encontradas", 
+             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))),
+             @ApiResponse(responseCode = "404", description = "No se encontraron tarjetas para el usuario"),
+             @ApiResponse(responseCode = "500", description = "Error interno al obtener las tarjetas")
+     })
 
     @GetMapping("/obtener/{correoUsuario}")
     public ResponseEntity<Map<String, Object>> obtenerTarjetasPorCliente(@PathVariable String correoUsuario) {

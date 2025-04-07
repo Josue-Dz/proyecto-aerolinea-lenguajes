@@ -1,6 +1,8 @@
 package hn.unah.backend.models;
 
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +33,9 @@ public class Lugar {
 
     private String nombre;
 
-    private double latitud;
+    private BigDecimal latitud;
 
-    private double longitud;
+    private BigDecimal longitud;
 
     @OneToOne(mappedBy = "lugar")
     private Aeropuerto aeropuertos;
